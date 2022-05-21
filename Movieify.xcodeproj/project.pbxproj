@@ -7,9 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E5304D1E2837F3840033775E /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5304D1D2837F3840033775E /* UIViewExtensions.swift */; };
+		E5304D202837F4140033775E /* PopularVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5304D1F2837F4140033775E /* PopularVC.swift */; };
+		E5304D222837F43C0033775E /* TopRatedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5304D212837F43C0033775E /* TopRatedVC.swift */; };
+		E5304D252837F4C20033775E /* UpcomingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5304D242837F4C20033775E /* UpcomingVC.swift */; };
+		E5304D2828380B260033775E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E5304D2728380B260033775E /* Alamofire */; };
+		E5304D2C283810D90033775E /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5304D2B283810D90033775E /* BaseService.swift */; };
+		E5304D2E283811720033775E /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5304D2D283811720033775E /* Constant.swift */; };
+		E5304D3028381C390033775E /* MovieAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5304D2F28381C390033775E /* MovieAPI.swift */; };
+		E5304D32283895300033775E /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5304D31283895300033775E /* Movie.swift */; };
+		E5304D342838A7610033775E /* APIErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5304D332838A7610033775E /* APIErrors.swift */; };
 		E572C4592837AF75006E6ECF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E572C4582837AF75006E6ECF /* AppDelegate.swift */; };
 		E572C45B2837AF75006E6ECF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E572C45A2837AF75006E6ECF /* SceneDelegate.swift */; };
-		E572C45D2837AF75006E6ECF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E572C45C2837AF75006E6ECF /* ViewController.swift */; };
+		E572C45D2837AF75006E6ECF /* NowPlayingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E572C45C2837AF75006E6ECF /* NowPlayingVC.swift */; };
 		E572C4602837AF75006E6ECF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E572C45E2837AF75006E6ECF /* Main.storyboard */; };
 		E572C4632837AF75006E6ECF /* Movieify.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E572C4612837AF75006E6ECF /* Movieify.xcdatamodeld */; };
 		E572C4652837AF78006E6ECF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E572C4642837AF78006E6ECF /* Assets.xcassets */; };
@@ -17,10 +27,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E5304D1D2837F3840033775E /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		E5304D1F2837F4140033775E /* PopularVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularVC.swift; sourceTree = "<group>"; };
+		E5304D212837F43C0033775E /* TopRatedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRatedVC.swift; sourceTree = "<group>"; };
+		E5304D242837F4C20033775E /* UpcomingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingVC.swift; sourceTree = "<group>"; };
+		E5304D2B283810D90033775E /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
+		E5304D2D283811720033775E /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		E5304D2F28381C390033775E /* MovieAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieAPI.swift; sourceTree = "<group>"; };
+		E5304D31283895300033775E /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		E5304D332838A7610033775E /* APIErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIErrors.swift; sourceTree = "<group>"; };
 		E572C4552837AF75006E6ECF /* Movieify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movieify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E572C4582837AF75006E6ECF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E572C45A2837AF75006E6ECF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E572C45C2837AF75006E6ECF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E572C45C2837AF75006E6ECF /* NowPlayingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingVC.swift; sourceTree = "<group>"; };
 		E572C45F2837AF75006E6ECF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E572C4622837AF75006E6ECF /* Movieify.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Movieify.xcdatamodel; sourceTree = "<group>"; };
 		E572C4642837AF78006E6ECF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
@@ -33,12 +52,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5304D2828380B260033775E /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E5304D1C2837F34A0033775E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E5304D1D2837F3840033775E /* UIViewExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E5304D29283810970033775E /* APIServices */ = {
+			isa = PBXGroup;
+			children = (
+				E5304D2A283810B60033775E /* ServicesHandler */,
+				E5304D2F28381C390033775E /* MovieAPI.swift */,
+			);
+			path = APIServices;
+			sourceTree = "<group>";
+		};
+		E5304D2A283810B60033775E /* ServicesHandler */ = {
+			isa = PBXGroup;
+			children = (
+				E5304D2B283810D90033775E /* BaseService.swift */,
+				E5304D332838A7610033775E /* APIErrors.swift */,
+			);
+			path = ServicesHandler;
+			sourceTree = "<group>";
+		};
 		E572C44C2837AF75006E6ECF = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +104,8 @@
 		E572C4572837AF75006E6ECF /* Movieify */ = {
 			isa = PBXGroup;
 			children = (
+				E5304D29283810970033775E /* APIServices */,
+				E5304D1C2837F34A0033775E /* Extensions */,
 				E572C4742837B126006E6ECF /* Storyboards */,
 				E572C4732837B10E006E6ECF /* Application */,
 				E572C4722837B0EA006E6ECF /* Resources */,
@@ -72,6 +120,7 @@
 		E572C46F2837B0C5006E6ECF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E5304D31283895300033775E /* Movie.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -79,7 +128,10 @@
 		E572C4702837B0D2006E6ECF /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E572C45C2837AF75006E6ECF /* ViewController.swift */,
+				E572C45C2837AF75006E6ECF /* NowPlayingVC.swift */,
+				E5304D1F2837F4140033775E /* PopularVC.swift */,
+				E5304D212837F43C0033775E /* TopRatedVC.swift */,
+				E5304D242837F4C20033775E /* UpcomingVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -95,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				E572C4642837AF78006E6ECF /* Assets.xcassets */,
+				E5304D2D283811720033775E /* Constant.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -134,6 +187,9 @@
 			dependencies = (
 			);
 			name = Movieify;
+			packageProductDependencies = (
+				E5304D2728380B260033775E /* Alamofire */,
+			);
 			productName = Movieify;
 			productReference = E572C4552837AF75006E6ECF /* Movieify.app */;
 			productType = "com.apple.product-type.application";
@@ -162,6 +218,9 @@
 				Base,
 			);
 			mainGroup = E572C44C2837AF75006E6ECF;
+			packageReferences = (
+				E5304D2628380B260033775E /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = E572C4562837AF75006E6ECF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -189,10 +248,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E572C45D2837AF75006E6ECF /* ViewController.swift in Sources */,
+				E5304D202837F4140033775E /* PopularVC.swift in Sources */,
+				E5304D222837F43C0033775E /* TopRatedVC.swift in Sources */,
+				E5304D32283895300033775E /* Movie.swift in Sources */,
+				E572C45D2837AF75006E6ECF /* NowPlayingVC.swift in Sources */,
+				E5304D1E2837F3840033775E /* UIViewExtensions.swift in Sources */,
+				E5304D3028381C390033775E /* MovieAPI.swift in Sources */,
 				E572C4632837AF75006E6ECF /* Movieify.xcdatamodeld in Sources */,
 				E572C4592837AF75006E6ECF /* AppDelegate.swift in Sources */,
+				E5304D252837F4C20033775E /* UpcomingVC.swift in Sources */,
+				E5304D2E283811720033775E /* Constant.swift in Sources */,
 				E572C45B2837AF75006E6ECF /* SceneDelegate.swift in Sources */,
+				E5304D2C283810D90033775E /* BaseService.swift in Sources */,
+				E5304D342838A7610033775E /* APIErrors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,12 +410,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Movieify/Info.plist;
+				INFOPLIST_FILE = Movieify/Application/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -369,12 +438,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Movieify/Info.plist;
+				INFOPLIST_FILE = Movieify/Application/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -410,6 +480,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E5304D2628380B260033775E /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E5304D2728380B260033775E /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E5304D2628380B260033775E /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		E572C4612837AF75006E6ECF /* Movieify.xcdatamodeld */ = {
