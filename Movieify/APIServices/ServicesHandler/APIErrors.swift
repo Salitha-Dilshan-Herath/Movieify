@@ -11,5 +11,6 @@ enum APIErrors: String, Error {
     
     case invalidResponse  = "Invalid response from server. Please try again."
     case unableToComplete = "Unable to complete your request. Something went wrong."
-   
+    case pageLimitExceed = "No more data available"
+
 }

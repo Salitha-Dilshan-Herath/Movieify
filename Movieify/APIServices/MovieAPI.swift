@@ -10,9 +10,9 @@ import Alamofire
 
 struct MovieAPI {
     
-    static func getMovieList(completed: @escaping(Result<MoviesResponse, APIErrors>)-> Void) {
+    static func getMovieList(page: Int, completed: @escaping(Result<MoviesResponse, APIErrors>)-> Void) {
         
-        let url =  "\(Constant.API_BASE_URL)movie/now_playing?page=1&"
+        let url =  "\(Constant.API_BASE_URL)movie/now_playing?page=\(page)&"
         
         let request = BaseService.shared.generateRequest(url: url, method: .get, body: nil)
         
@@ -25,6 +25,8 @@ struct MovieAPI {
                 completed(.success(result))
                 
             case .failure(let error):
+                
+                print("Error from getMovieList: - \(error)")
                 
                 if error.isResponseSerializationError {
                     

@@ -67,7 +67,23 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bqg-Gf-hbl">
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Vjw-Ra-lcU">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="769"/>
+                                        <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="unE-HU-YDe" id="Nur-aW-F1R"/>
+                                            <outlet property="delegate" destination="unE-HU-YDe" id="cNc-3s-CvA"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemTealColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Vjw-Ra-lcU" secondAttribute="trailing" id="MSx-D1-1lO"/>
+                                    <constraint firstAttribute="bottom" secondItem="Vjw-Ra-lcU" secondAttribute="bottom" id="MUE-g1-WzT"/>
+                                    <constraint firstItem="Vjw-Ra-lcU" firstAttribute="top" secondItem="bqg-Gf-hbl" secondAttribute="top" id="Occ-yB-9dO"/>
+                                    <constraint firstItem="Vjw-Ra-lcU" firstAttribute="leading" secondItem="bqg-Gf-hbl" secondAttribute="leading" id="VoN-cZ-5jz"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8Th-Jc-Ery"/>
@@ -81,6 +97,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="9ni-gb-N1h"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="tblMovie" destination="Vjw-Ra-lcU" id="6I4-jf-O6W"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A0k-6J-RDE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
