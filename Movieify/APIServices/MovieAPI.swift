@@ -38,4 +38,34 @@ struct MovieAPI {
             }
         }
     }
+    
+    static func getGenreList(completed: @escaping(Result<GenreResponse, APIErrors>)-> Void) {
+        
+        let url =  "\(Constant.API_BASE_URL)genre/movie/list?"
+
+        let request = BaseService.shared.generateRequest(url: url, method: .get, body: nil)
+
+        AF.request(request).validate().responseDecodable(of: GenreResponse.self, decoder: BaseService.shared.decoder) { (response) in
+            
+            switch response.result {
+                
+            case .success(let result):
+                
+                completed(.success(result))
+                
+            case .failure(let error):
+                
+                print("Error from getGenreList: - \(error)")
+                
+                if error.isResponseSerializationError {
+                    
+                    completed(.failure(.invalidResponse))
+                    
+                } else {
+                    completed(.failure(.unableToComplete))
+                }
+            }
+        }
+        
+    }
 }

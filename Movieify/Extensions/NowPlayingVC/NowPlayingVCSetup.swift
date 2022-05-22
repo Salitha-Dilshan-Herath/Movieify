@@ -17,7 +17,24 @@ extension NowPlayingVC {
         tblMovie.tableFooterView = UIView()
         tblMovie.estimatedRowHeight = UITableView.automaticDimension
         
-        getMovies(reset: true)
+        MovieAPI.getGenreList() { result in
+            
+            switch result {
+                
+            case .success(let response):
+                
+                if let list = response.genres {
+                    Constant.GENRE_LIST = list
+                }
+                
+            case .failure(let error):
+                print(error)
+            }
+            
+            self.getMovies(reset: true)
+        }
+        
+        
         
     }
 }

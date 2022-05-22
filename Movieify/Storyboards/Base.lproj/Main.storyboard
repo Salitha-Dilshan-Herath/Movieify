@@ -113,7 +113,7 @@
                     <navigationItem key="navigationItem" id="DB8-mf-nVo"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fZZ-oN-lNJ">
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="0.86666666670000003" green="0.10980392160000001" blue="0.29411764709999999" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="GCR-jC-p0a" kind="relationship" relationship="viewControllers" id="Vii-92-Kva"/>

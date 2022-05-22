@@ -21,4 +21,7 @@ struct Constant {
     
     //MARK: - Navigation Titiles
     public static var NOW_PLAYING_TITLE = "Now Playing"
+    
+    //MARK: - Genre List
+    public static var GENRE_LIST = [Genre]()
 }
