@@ -24,4 +24,7 @@ struct Constant {
     
     //MARK: - Genre List
     public static var GENRE_LIST = [Genre]()
+    
+    //MARK: - Segue Identifier
+    public static var MOVIE_DETAIL_SEGUE = "movie_details"
 }

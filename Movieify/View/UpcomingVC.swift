@@ -18,6 +18,5 @@ class UpcomingVC: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        configureNavigationBar(largeTitleColor: .white, backgoundColor: .red, tintColor: .white, title: "Upcoming", preferredLargeTitle: true)
     }
 }

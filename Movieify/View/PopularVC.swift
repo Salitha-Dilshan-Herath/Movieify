@@ -17,7 +17,6 @@ class PopularVC: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        configureNavigationBar(largeTitleColor: .white, backgoundColor: .red, tintColor: .white, title: "Popular", preferredLargeTitle: true)
     }
 
 }

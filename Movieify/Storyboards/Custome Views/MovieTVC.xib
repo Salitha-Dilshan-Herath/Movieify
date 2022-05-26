@@ -62,14 +62,32 @@
                                                         <color key="textColor" systemColor="systemYellowColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bqc-g5-Rt6">
+                                                        <rect key="frame" x="225" y="0.0" width="8.5" height="19.5"/>
+                                                        <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="14"/>
+                                                        <color key="textColor" systemColor="systemYellowColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vote" translatesAutoresizingMaskIntoConstraints="NO" id="AlT-Tu-bAz">
+                                                        <rect key="frame" x="205" y="2" width="15" height="15"/>
+                                                        <color key="tintColor" systemColor="systemYellowColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="15" id="8eY-Js-eAt"/>
+                                                            <constraint firstAttribute="width" constant="15" id="WWC-9Q-OcK"/>
+                                                        </constraints>
+                                                    </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
+                                                    <constraint firstItem="AlT-Tu-bAz" firstAttribute="centerY" secondItem="gZe-B1-VQb" secondAttribute="centerY" id="1A5-Cm-8Og"/>
                                                     <constraint firstItem="cAd-Pn-jrs" firstAttribute="leading" secondItem="gZe-B1-VQb" secondAttribute="leading" id="3sQ-aF-yPE"/>
                                                     <constraint firstItem="bmo-Pc-2qY" firstAttribute="leading" secondItem="cAd-Pn-jrs" secondAttribute="trailing" constant="5" id="8Ox-Ml-fsW"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Bqc-g5-Rt6" secondAttribute="trailing" id="Dm4-t4-63l"/>
+                                                    <constraint firstItem="Bqc-g5-Rt6" firstAttribute="centerY" secondItem="gZe-B1-VQb" secondAttribute="centerY" id="GKa-eH-hO8"/>
                                                     <constraint firstItem="bmo-Pc-2qY" firstAttribute="centerY" secondItem="cAd-Pn-jrs" secondAttribute="centerY" id="Gsj-Q4-bmU"/>
                                                     <constraint firstItem="bmo-Pc-2qY" firstAttribute="top" secondItem="gZe-B1-VQb" secondAttribute="top" id="YI7-Ta-Siy"/>
                                                     <constraint firstAttribute="height" constant="19.5" id="aKd-B5-cm2"/>
+                                                    <constraint firstItem="Bqc-g5-Rt6" firstAttribute="leading" secondItem="AlT-Tu-bAz" secondAttribute="trailing" constant="5" id="qtN-X2-O0b"/>
                                                     <constraint firstItem="cAd-Pn-jrs" firstAttribute="top" secondItem="gZe-B1-VQb" secondAttribute="top" id="w93-in-Rdh"/>
                                                 </constraints>
                                             </view>
@@ -156,6 +174,7 @@
                 <outlet property="lblMovieName" destination="Al0-tX-V1v" id="oL4-FG-kFk"/>
                 <outlet property="lblRatings" destination="bmo-Pc-2qY" id="mZk-we-HRP"/>
                 <outlet property="lblReleaseDate" destination="574-u8-DkL" id="I1I-Jy-1ut"/>
+                <outlet property="lblVote" destination="Bqc-g5-Rt6" id="pew-Wm-Ug2"/>
                 <outlet property="viwContent" destination="Yn5-0d-A8R" id="9WO-hf-1cT"/>
             </connections>
             <point key="canvasLocation" x="169.56521739130437" y="140.625"/>
@@ -163,6 +182,7 @@
     </objects>
     <resources>
         <image name="star.fill" catalog="system" width="128" height="116"/>
+        <image name="vote" width="64" height="64"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

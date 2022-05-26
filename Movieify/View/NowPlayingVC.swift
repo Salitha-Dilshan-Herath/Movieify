@@ -8,14 +8,15 @@
 import UIKit
 
 class NowPlayingVC: UIViewController {
-    
+ 
     //MARK: - @IBOutlets
     @IBOutlet weak var tblMovie: UITableView!
     
     //MARK: - Variable
     let viewModel = NowPlayingViewModel()
     var movieList = [Movie]()
-    
+    var selectedMovie = Movie()
+
     //MARK: - Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +26,9 @@ class NowPlayingVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        configureNavigationBar(largeTitleColor: .white, backgoundColor: .red, tintColor: .white, title: Constant.NOW_PLAYING_TITLE, preferredLargeTitle: true)
+        self.getMovies(reset: true)
+        
+       
     }
     
     //MARK: - Custom Methods
@@ -50,9 +53,13 @@ class NowPlayingVC: UIViewController {
                 print(error.rawValue)
             }
         }
+    }
+    
+    func reloadNavigation(){
+        navigationItem.searchController = nil // or searchController
         
     }
-}
+} 
 
 
 

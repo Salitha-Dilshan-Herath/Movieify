@@ -16,6 +16,7 @@ class MovieTVC: UITableViewCell {
     @IBOutlet weak var lblGenre: UILabel!
     @IBOutlet weak var lblReleaseDate: UILabel!
     @IBOutlet weak var lblRatings: UILabel!
+    @IBOutlet weak var lblVote: UILabel!
     
     
     let dateFormatter = DateFormatter()
@@ -35,12 +36,15 @@ class MovieTVC: UITableViewCell {
 
     func setupUI(movie: Movie){
         
+        //Show Poster image
         if let path = movie.posterPath,  let poster_url = URL(string: Constant.RESOURCE_BASE_URL + path) {
             imgPoster.sd_setImage(with: poster_url)
         }
         
+        //Show Title
         lblMovieName.text = movie.title
 
+        //Show Genres List
         var genreStr = ""
         
         movie.genreIds?.forEach{ id in
@@ -50,9 +54,9 @@ class MovieTVC: UITableViewCell {
             }
         }
         
-        
         lblGenre.text = "Genre: -\(genreStr.dropLast())"
         
+        //Show Release Date
         if let release_date = movie.releaseDate  {
             
             let date = dateFormatter.string(from: release_date)
@@ -60,7 +64,11 @@ class MovieTVC: UITableViewCell {
             lblReleaseDate.text = "Release Date:- \(date)"
         }
         
+        //Show Vote Average
         lblRatings.text = "\(movie.voteAverage ?? 0)"
+        
+        //Show Vote Count
+        lblVote.text = "\(movie.voteCount ?? 0)"
     }
     
 }

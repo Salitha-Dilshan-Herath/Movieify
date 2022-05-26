@@ -30,11 +30,15 @@ extension NowPlayingVC {
             case .failure(let error):
                 print(error)
             }
-            
-            self.getMovies(reset: true)
         }
-        
-        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    
+        if let movieDetailsVC = segue.destination as? MovieDetailVC{
+            
+            movieDetailsVC.selectedMovie = self.selectedMovie
+        }
         
     }
 }
@@ -48,9 +52,10 @@ extension NowPlayingVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieTVC", for: indexPath) as! MovieTVC
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constant.MOVIE_TABLE_CELL, for: indexPath) as! MovieTVC
         
         cell.setupUI(movie: self.movieList[indexPath.row])
+        cell.selectionStyle = .none
         
         return cell
     }
@@ -65,5 +70,13 @@ extension NowPlayingVC: UITableViewDataSource, UITableViewDelegate {
             
             getMovies(reset: false)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let data = self.movieList[indexPath.row]
+        self.selectedMovie = data
+        
+        self.performSegue(withIdentifier: Constant.MOVIE_DETAIL_SEGUE, sender: nil)
     }
 }
