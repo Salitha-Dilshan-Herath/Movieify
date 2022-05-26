@@ -61,7 +61,14 @@ class MovieTVC: UITableViewCell {
             
             let date = dateFormatter.string(from: release_date)
             
-            lblReleaseDate.text = "Release Date:- \(date)"
+            if date == "01/Jan/1000" {
+                
+                lblReleaseDate.text = "Release date not available"
+            } else {
+                lblReleaseDate.text = "Release Date:- \(date)"
+            }
+            
+            
         }
         
         //Show Vote Average

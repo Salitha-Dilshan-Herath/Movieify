@@ -24,10 +24,36 @@ class MovieDetailVC: UIViewController {
     @IBOutlet weak var lblVote: UILabel!
     @IBOutlet weak var lblVoteCount: UILabel!
     @IBOutlet weak var viwFav: UIView!
+    @IBOutlet weak var lblFav: UILabel!
+    @IBOutlet weak var imgFav: UIImageView!
     
     //MARK: - Instance Variables
     var selectedMovie = Movie()
     let dateFormatter = DateFormatter()
+    var isOption = false
+    let coreDataManger = CoreDataManager()
+    var isFavMovie = false {
+        didSet {
+            
+            viwFav.layer.cornerRadius = 10
+            viwFav.layer.borderColor  = UIColor.red.cgColor
+            viwFav.layer.borderWidth  = 1
+            
+            if isFavMovie {
+                viwFav.backgroundColor = UIColor.red
+                lblFav.text = "Remove from Favourites"
+                lblFav.textColor = UIColor.white
+                imgFav.tintColor = UIColor.white
+                
+            } else {
+                viwFav.backgroundColor = UIColor.white
+                lblFav.text = "Add to Favourites"
+                lblFav.textColor = UIColor.red
+                imgFav.tintColor = UIColor.red
+            }
+        }
+    }
+    var isFavOption = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,10 +72,51 @@ class MovieDetailVC: UIViewController {
     }
 
     @IBAction func backBtn(_ sender: Any) {
-        _ = navigationController?.popViewController(animated: true)
+        
+        if isOption {
+            self.dismiss(animated: true)
+        } else{
+            _ = navigationController?.popViewController(animated: true)
+        }
+       
+    }
+    
+    @IBAction func favBtnTap(_ sender: Any) {
+        
+        if !isFavMovie {
+            
+            let favMovie = FavouriteMovie(adult: self.selectedMovie.adult ?? false, backdropPath: self.selectedMovie.backdropPath ?? "", genreIds: lblGenre.text!, id: self.selectedMovie.id ?? 0, originalLanguage: self.selectedMovie.originalLanguage ?? "", originalTitle: self.selectedMovie.originalTitle ?? "", overview: lblOverview.text!, popularity: self.selectedMovie.popularity ?? 0, posterPath: self.selectedMovie.posterPath ??  "", releaseDate: self.selectedMovie.releaseDate!, title: self.selectedMovie.title ?? "", video: self.selectedMovie.video ?? false, voteAverage: self.selectedMovie.voteAverage ?? 0 , voteCount: self.selectedMovie.voteCount ?? 0)
+            
+            
+            coreDataManger.saveFavMovie(movie: favMovie) { result in
+                
+                if result {
+                    
+                    Alert.showMessage(msg: "Movie add to favourite list successfully", on: self)
+                    self.isFavMovie = true
+                    
+                } else {
+                    Alert.showMessage(msg: "Movie add to favourite list unsuccessfully", on: self)
+                }
+            }
+            
+        } else {
+            print("Already fav movie")
+            
+            coreDataManger.deleteFavMovie(id: self.selectedMovie.id ?? 0) { result in
+                
+                if result {
+                    self.isFavMovie = false
+                } else {
+                    Alert.showMessage(msg: "Remove favourite failed", on: self)
+                }
+            }
+        }
     }
     
     func setupUI() {
+        
+        self.isFavMovie = coreDataManger.isFavMovieExists(id: (self.selectedMovie.id ?? 0))
         
         dateFormatter.dateFormat = "dd MMM yyyy"
         dateFormatter.timeZone   = TimeZone(abbreviation: "UTC")
@@ -103,10 +170,19 @@ class MovieDetailVC: UIViewController {
             
             let date = dateFormatter.string(from: release_date)
             
-            btnRelaseDate.setTitle("Release on \(date)", for: .normal)
+            if date == "01 Jan 1000" {
+                btnRelaseDate.setTitle("Release date not available", for: .normal)
+            } else {
+                btnRelaseDate.setTitle("Release on \(date)", for: .normal)
+            }
         }
         
-        lblOverview.text = selectedMovie.overview
+        if ((selectedMovie.overview?.isEmpty) != nil) {
+            lblOverview.text = "Not Available"
+        } else {
+            lblOverview.text = selectedMovie.overview
+        }
+        
         
         lblLanguage.text = selectedMovie.originalLanguage?.uppercased()
         

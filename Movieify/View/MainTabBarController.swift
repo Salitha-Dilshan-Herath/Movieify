@@ -44,7 +44,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate, UISe
     }
     
     @IBAction func searchBtnTap(_ sender: Any) {
-        let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NowPlayingVC") as! NowPlayingVC
+        let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SearchVC") as! SearchVC
         self.present(viewController, animated: true, completion: nil)
     }
     

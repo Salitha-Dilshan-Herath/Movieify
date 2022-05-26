@@ -27,4 +27,6 @@ struct Constant {
     
     //MARK: - Segue Identifier
     public static var MOVIE_DETAIL_SEGUE = "movie_details"
+    
+    static let ALERT_HEADER = "Movieify"
 }

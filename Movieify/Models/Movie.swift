@@ -40,3 +40,30 @@ struct Movie: Decodable {
     var voteCount: Int?
 
 }
+
+struct FavouriteMovie: Decodable {
+    var adult: Bool
+    var backdropPath: String
+    var genreIds: String
+    var id: Int
+    var originalLanguage: String
+    var originalTitle: String
+    var overview: String
+    var popularity: Float
+    var posterPath: String
+    var releaseDate: Date
+    var title: String
+    var video: Bool
+    var voteAverage: Float
+    var voteCount: Int
+
+}
+
+
+enum MovieType: String {
+    case nowPlaying = "movie/now_playing"
+    case popular = "movie/popular"
+    case topRated = "movie/top_rated"
+    case upcoming = "movie/upcoming"
+    
+}

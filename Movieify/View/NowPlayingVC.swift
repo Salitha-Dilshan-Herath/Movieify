@@ -13,7 +13,7 @@ class NowPlayingVC: UIViewController {
     @IBOutlet weak var tblMovie: UITableView!
     
     //MARK: - Variable
-    let viewModel = NowPlayingViewModel()
+    let viewModel = MovieViewModel()
     var movieList = [Movie]()
     var selectedMovie = Movie()
 
@@ -27,8 +27,6 @@ class NowPlayingVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.getMovies(reset: true)
-        
-       
     }
     
     //MARK: - Custom Methods
@@ -37,9 +35,10 @@ class NowPlayingVC: UIViewController {
         if reset {
             viewModel.page    = 0
             viewModel.isLoad  = false
+            movieList.removeAll()
         }
         
-        viewModel.loadNowPlayingMovies() { result in
+        viewModel.loadMovies(movieType: .nowPlaying) { result in
             
             switch result {
                 
@@ -53,11 +52,6 @@ class NowPlayingVC: UIViewController {
                 print(error.rawValue)
             }
         }
-    }
-    
-    func reloadNavigation(){
-        navigationItem.searchController = nil // or searchController
-        
     }
 } 
 

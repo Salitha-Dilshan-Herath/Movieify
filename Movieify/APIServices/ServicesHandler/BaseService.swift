@@ -28,16 +28,20 @@ class BaseService {
             
             if let date = self.formatter.date(from: dateString) {
                 return date
+            } else {
+                
+                print("Cannot decode date string \(dateString)")
+                return self.formatter.date(from: "1000-01-01")!
             }
-            throw DecodingError.dataCorruptedError(in: container,
-                debugDescription: "Cannot decode date string \(dateString)")
+            
+            
         }
     }
     
     public func generateRequest(url: String, method: HTTPMethod, body: Data?) -> URLRequest {
         
         guard let formateUrl = URL(string: url + "api_key=\(Constant.MOVIE_API_KEY)") else {
-            fatalError("Invalid URL")
+            fatalError("Invalid URL \(url)")
         }
         
         request.url      = formateUrl

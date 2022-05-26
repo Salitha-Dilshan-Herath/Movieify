@@ -1,22 +1,26 @@
 //
-//  TopRatedVC.swift
+//  SearchVC.swift
 //  Movieify
 //
-//  Created by Spemai-Macbook on 2022-05-20.
+//  Created by Spemai-Macbook on 2022-05-26.
 //
 
 import UIKit
 
-class TopRatedVC: UIViewController {
-
+class SearchVC: UIViewController {
+    
     //MARK: - @IBOutlets
     @IBOutlet weak var tblMovie: UITableView!
+    @IBOutlet weak var txtSeachBar: UISearchBar!
     
     //MARK: - Variable
     let viewModel = MovieViewModel()
     var movieList = [Movie]()
     var selectedMovie = Movie()
-
+    var searchText = ""
+    
+    
+    
     //MARK: - Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,13 +30,13 @@ class TopRatedVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.getMovies(reset: true)
         
-       
     }
     
     //MARK: - Custom Methods
-    func getMovies(reset: Bool)  {
+    func getMovies(reset: Bool, search: String)  {
+        
+        tblMovie.isHidden = false
         
         if reset {
             viewModel.page    = 0
@@ -40,14 +44,20 @@ class TopRatedVC: UIViewController {
             movieList.removeAll()
         }
         
-        viewModel.loadMovies(movieType: .topRated) { result in
+        viewModel.searchMovies(text: search.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "") { [self] result in
             
             switch result {
                 
             case .success(let list):
-                
+            
                 self.movieList.append(contentsOf: list)
-                self.tblMovie.reloadData()
+                
+                if self.movieList.count > 0 {
+                    self.tblMovie.reloadData()
+                } else {
+                    tblMovie.isHidden = true
+                }
+                
                 
             case .failure(let error):
                 
@@ -55,5 +65,4 @@ class TopRatedVC: UIViewController {
             }
         }
     }
-    
 }
