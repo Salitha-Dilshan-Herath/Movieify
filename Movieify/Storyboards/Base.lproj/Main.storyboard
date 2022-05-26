@@ -592,7 +592,11 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="E70-hu-b0W" customClass="MainTabBarController" customModule="Movieify" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Now Playing" id="Cbw-Dx-5kC">
-                        <barButtonItem key="leftBarButtonItem" image="star.fill" catalog="system" id="LDc-EX-x79"/>
+                        <barButtonItem key="leftBarButtonItem" image="star.fill" catalog="system" id="LDc-EX-x79">
+                            <connections>
+                                <action selector="favBtnTap:" destination="E70-hu-b0W" id="mkv-jq-2H8"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="magnifyingglass" catalog="system" id="Eqd-mZ-rAL">
                             <connections>
                                 <action selector="searchBtnTap:" destination="E70-hu-b0W" id="ZOg-bD-1gg"/>
@@ -672,9 +676,52 @@
             </objects>
             <point key="canvasLocation" x="1908" y="87"/>
         </scene>
+        <!--FavouriteVC-->
+        <scene sceneID="rQ1-Zc-lGM">
+            <objects>
+                <viewController storyboardIdentifier="FavouriteVC" id="zSw-Mq-Evg" customClass="FavouriteVC" customModule="Movieify" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="135-gN-lMg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No favourite items available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="suF-Fq-MkB">
+                                <rect key="frame" x="82" y="440.5" width="250" height="25.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ep0-SG-3v7">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="zSw-Mq-Evg" id="EI8-jT-2BX"/>
+                                    <outlet property="delegate" destination="zSw-Mq-Evg" id="6ud-k3-UTB"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="bDQ-in-O2i"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="suF-Fq-MkB" firstAttribute="centerY" secondItem="bDQ-in-O2i" secondAttribute="centerY" id="FDM-qt-0I6"/>
+                            <constraint firstItem="bDQ-in-O2i" firstAttribute="bottom" secondItem="ep0-SG-3v7" secondAttribute="bottom" id="Sc9-7U-dR0"/>
+                            <constraint firstItem="ep0-SG-3v7" firstAttribute="leading" secondItem="bDQ-in-O2i" secondAttribute="leading" id="Ywu-wh-j85"/>
+                            <constraint firstItem="ep0-SG-3v7" firstAttribute="top" secondItem="bDQ-in-O2i" secondAttribute="top" id="ibp-gK-lGZ"/>
+                            <constraint firstItem="ep0-SG-3v7" firstAttribute="trailing" secondItem="bDQ-in-O2i" secondAttribute="trailing" id="l65-jz-D8E"/>
+                            <constraint firstItem="suF-Fq-MkB" firstAttribute="centerX" secondItem="bDQ-in-O2i" secondAttribute="centerX" id="sXG-1Z-zcC"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tblMovie" destination="ep0-SG-3v7" id="MWu-QX-1fy"/>
+                        <segue destination="58N-1E-V3h" kind="show" identifier="movie_details" id="pai-Wa-g47"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Tf-JM-NUh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2639" y="90"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="JT9-t0-WRL"/>
+        <segue reference="pai-Wa-g47"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.left" catalog="system" width="128" height="98"/>

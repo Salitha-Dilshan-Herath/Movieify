@@ -78,19 +78,19 @@ struct CoreDataManager {
         
     }
     
-    func getCategoryList() -> [NSManagedObject]  {
+    func getFavMovieList() -> [FavMovie]  {
 
-        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "FavMovie")
+        let fetchRequest : NSFetchRequest<FavMovie> = FavMovie.fetchRequest()
 
         do {
-            let result = try self.manageContent!.fetch(fetch)
+            let result = try self.manageContent!.fetch(fetchRequest)
 
-            return (result as? [NSManagedObject] ?? [NSManagedObject]())
+            return (result)
 
         } catch {
 
             print("Failed")
-            return [NSManagedObject]()
+            return [FavMovie]()
         }
     }
 

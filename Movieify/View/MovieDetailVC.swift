@@ -29,6 +29,8 @@ class MovieDetailVC: UIViewController {
     
     //MARK: - Instance Variables
     var selectedMovie = Movie()
+    var selectedFavMovie = FavMovie()
+
     let dateFormatter = DateFormatter()
     var isOption = false
     let coreDataManger = CoreDataManager()
@@ -57,12 +59,13 @@ class MovieDetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
+        
     }
     
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setupUI()
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
 
@@ -73,7 +76,7 @@ class MovieDetailVC: UIViewController {
 
     @IBAction func backBtn(_ sender: Any) {
         
-        if isOption {
+        if isOption || isFavOption {
             self.dismiss(animated: true)
         } else{
             _ = navigationController?.popViewController(animated: true)
@@ -103,10 +106,15 @@ class MovieDetailVC: UIViewController {
         } else {
             print("Already fav movie")
             
-            coreDataManger.deleteFavMovie(id: self.selectedMovie.id ?? 0) { result in
+            coreDataManger.deleteFavMovie(id: (isFavOption ? Int(self.selectedFavMovie.id) : self.selectedMovie.id ?? 0)) { [self] result in
                 
                 if result {
                     self.isFavMovie = false
+                    
+                    if isFavOption {
+                        self.dismiss(animated: true)
+                    }
+                    
                 } else {
                     Alert.showMessage(msg: "Remove favourite failed", on: self)
                 }
@@ -116,7 +124,7 @@ class MovieDetailVC: UIViewController {
     
     func setupUI() {
         
-        self.isFavMovie = coreDataManger.isFavMovieExists(id: (self.selectedMovie.id ?? 0))
+        self.isFavMovie = coreDataManger.isFavMovieExists(id: (isFavOption ? Int(self.selectedFavMovie.id) : self.selectedMovie.id ?? 0))
         
         dateFormatter.dateFormat = "dd MMM yyyy"
         dateFormatter.timeZone   = TimeZone(abbreviation: "UTC")
@@ -139,34 +147,44 @@ class MovieDetailVC: UIViewController {
 
         imgBackDrop.sd_imageIndicator = SDWebImageActivityIndicator.gray
     
-        if let path = selectedMovie.backdropPath,  let backdrop_url = URL(string: Constant.RESOURCE_BASE_URL + path) {
+    
+        if let path = (isFavOption ? selectedFavMovie.backdropPath : selectedMovie.backdropPath),  let backdrop_url = URL(string: Constant.RESOURCE_BASE_URL + path) {
             
             imgBackDrop.sd_setImage(with: backdrop_url)
         }
         
-        if let path = selectedMovie.posterPath,  let poster_url = URL(string: Constant.RESOURCE_BASE_URL + path) {
+        if let path =  (isFavOption ? selectedFavMovie.posterPath : selectedMovie.posterPath),  let poster_url = URL(string: Constant.RESOURCE_BASE_URL + path) {
             
             imgPoster.sd_setImage(with: poster_url)
             imgPoster.sd_imageIndicator = SDWebImageActivityIndicator.gray
         }
         
         //Show Title
-        lblName.text = selectedMovie.title
+        lblName.text = isFavOption ? selectedFavMovie.title : selectedMovie.title
 
         //Show Genres List
-        var genreStr = ""
         
-        selectedMovie.genreIds?.forEach{ id in
+        if isFavOption {
             
-            if let item = Constant.GENRE_LIST.first(where: { $0.id == id }) {
-                genreStr += "\(item.name), "
+            lblGenre.text = selectedFavMovie.genres
+            
+        } else{
+            
+            var genreStr = ""
+            
+            selectedMovie.genreIds?.forEach{ id in
+                
+                if let item = Constant.GENRE_LIST.first(where: { $0.id == id }) {
+                    genreStr += "\(item.name), "
+                }
             }
+            
+            lblGenre.text = "\(genreStr.trimmingCharacters(in: .whitespaces).dropLast())"
         }
-        
-        lblGenre.text = "\(genreStr.trimmingCharacters(in: .whitespaces).dropLast())"
+     
         
         //Show Release Date
-        if let release_date = selectedMovie.releaseDate  {
+        if let release_date = (isFavOption ? selectedFavMovie.releaseDate : selectedMovie.releaseDate)  {
             
             let date = dateFormatter.string(from: release_date)
             
@@ -177,20 +195,25 @@ class MovieDetailVC: UIViewController {
             }
         }
         
-        if ((selectedMovie.overview?.isEmpty) != nil) {
-            lblOverview.text = "Not Available"
+        if isFavOption {
+            lblOverview.text = selectedFavMovie.overview
         } else {
-            lblOverview.text = selectedMovie.overview
+            if ((selectedMovie.overview?.isEmpty) != nil) {
+                lblOverview.text = "Not Available"
+            } else {
+                lblOverview.text = selectedMovie.overview
+            }
         }
         
         
-        lblLanguage.text = selectedMovie.originalLanguage?.uppercased()
+        
+        lblLanguage.text = isFavOption ? selectedFavMovie.originalLanguage?.uppercased() : selectedMovie.originalLanguage?.uppercased()
         
         //Show Vote Average
-        lblVote.text = "\(selectedMovie.voteAverage ?? 0) Rating"
+        lblVote.text = "\(isFavOption ? selectedFavMovie.voteAverage :selectedMovie.voteAverage ?? 0) Rating"
         
         //Show Vote Count
-        lblVoteCount.text = "\(selectedMovie.voteCount ?? 0) Votes"
+        lblVoteCount.text = "\(isFavOption ? Int(selectedFavMovie.voteCount) : selectedMovie.voteCount ?? 0) Votes"
         
     }
 }

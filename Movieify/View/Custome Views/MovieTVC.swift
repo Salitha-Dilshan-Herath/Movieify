@@ -78,4 +78,41 @@ class MovieTVC: UITableViewCell {
         lblVote.text = "\(movie.voteCount ?? 0)"
     }
     
+    func setupFavUI(movie: FavMovie){
+        
+        //Show Poster image
+        if let path = movie.posterPath,  let poster_url = URL(string: Constant.RESOURCE_BASE_URL + path) {
+            imgPoster.sd_setImage(with: poster_url)
+        }
+        
+        //Show Title
+        lblMovieName.text = movie.title
+
+        //Show Genres List
+    
+        
+        lblGenre.text = "Genre: -\(movie.genres ?? "--")"
+        
+        //Show Release Date
+        if let release_date = movie.releaseDate  {
+            
+            let date = dateFormatter.string(from: release_date)
+            
+            if date == "01/Jan/1000" {
+                
+                lblReleaseDate.text = "Release date not available"
+            } else {
+                lblReleaseDate.text = "Release Date:- \(date)"
+            }
+            
+            
+        }
+        
+        //Show Vote Average
+        lblRatings.text = "\(movie.voteAverage )"
+        
+        //Show Vote Count
+        lblVote.text = "\(movie.voteCount )"
+    }
+    
 }
