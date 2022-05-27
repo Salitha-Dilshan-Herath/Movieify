@@ -27,7 +27,7 @@ class FavouriteVC: UIViewController {
         }
     }
     
-    var selectedMovie = FavMovie()
+    var selectedMovie: FavMovie!
     let coreDataManger = CoreDataManager()
 
     //MARK: - Life Cycle Methods

@@ -28,5 +28,9 @@ struct Constant {
     //MARK: - Segue Identifier
     public static var MOVIE_DETAIL_SEGUE = "movie_details"
     
+    //MARK: - Alerts Headers
     static let ALERT_HEADER = "Movieify"
+    static let MOVIE_SAVE_SUCCESSFULLY = "Movie added to favourite list successfully"
+    static let MOVIE_SAVE_FAILED = "Movie added to favourite list is failed"
+    static let MOVIE_REMOVE_FAILED = "Remove favourite failed"
 }
