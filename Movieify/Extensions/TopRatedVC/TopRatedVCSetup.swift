@@ -37,6 +37,8 @@ extension TopRatedVC {
     
         if let movieDetailsVC = segue.destination as? MovieDetailVC{
             
+            movieDetailsVC.isFavOption = false
+
             movieDetailsVC.selectedMovie = self.selectedMovie
         }
         

@@ -95,17 +95,16 @@ class MovieDetailVC: UIViewController {
                 
                 if result {
                     
-                    Alert.showMessage(msg: "Movie add to favourite list successfully", on: self)
+                    Alert.showMessage(msg: "Movie added to favourite list successfully", on: self)
                     self.isFavMovie = true
                     
                 } else {
-                    Alert.showMessage(msg: "Movie add to favourite list unsuccessfully", on: self)
+                    Alert.showMessage(msg: "Movie added to favourite list is failed", on: self)
                 }
             }
             
         } else {
-            print("Already fav movie")
-            
+          
             coreDataManger.deleteFavMovie(id: (isFavOption ? Int(self.selectedFavMovie.id) : self.selectedMovie.id ?? 0)) { [self] result in
                 
                 if result {
@@ -198,7 +197,7 @@ class MovieDetailVC: UIViewController {
         if isFavOption {
             lblOverview.text = selectedFavMovie.overview
         } else {
-            if ((selectedMovie.overview?.isEmpty) != nil) {
+            if ((selectedMovie.overview?.isEmpty ?? true)) {
                 lblOverview.text = "Not Available"
             } else {
                 lblOverview.text = selectedMovie.overview
